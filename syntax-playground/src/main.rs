@@ -2,6 +2,8 @@
 #[warn(unused_labels)]
 mod try_match;
 mod try_loop;
+mod try_format_print;
+use try_match::Color;
 fn main() {
     math();
     tup();
@@ -15,6 +17,8 @@ fn main() {
     };
     println!("The value of yy is: {}", yy);
     if_else();
+    try_format_print::format_print();
+    closures();
     try_loop::loop_forever();
     try_loop::loop_number_range();
     try_loop::loop_break_with_return();
@@ -23,6 +27,22 @@ fn main() {
     try_loop::loop_iterator();
     try_match::match_number();
     try_match::match_bool();
+    try_match::match_tuple();
+    try_match::match_array_slice();
+    try_match::match_enum(Color::RGB(122, 17, 40));
+    try_match::match_enum(Color::CMY(122, 17, 40));
+    try_match::match_blinding();
+    try_match::match_if_let();
+    try_match::match_loop_let();
+}
+
+fn closures() {
+    println!("--- closures() ---");
+    let doubler = |x| x * 2;
+    let value = 5;
+    let twice = doubler(value);
+
+    println!("{} doubled is {}", value, twice);
 }
 
 fn math() {
